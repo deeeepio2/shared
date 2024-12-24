@@ -15,13 +15,13 @@ export const compress = async (
 };
 
 export const decompress = async (
-	byteArray: string[],
+	byteArray: ArrayBuffer,
 	encoding = "gzip" as CompressionFormat,
 ): Promise<string> => {
-	const cs = new DecompressionStream(encoding);
-	const writer = cs.writable.getWriter();
+	const ds = new DecompressionStream(encoding);
+	const writer = ds.writable.getWriter();
 	writer.write(byteArray);
 	writer.close();
-	const arrayBuffer = await new Response(cs.readable).arrayBuffer();
+	const arrayBuffer = await new Response(ds.readable).arrayBuffer();
 	return new TextDecoder().decode(arrayBuffer);
 };
