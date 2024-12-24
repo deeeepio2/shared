@@ -11,9 +11,9 @@ export const encode = <T extends ctsPacketIds | stcPacketIds>(
 			const view = new DataView(buffer);
 			view.setUint8(0, ctsPacketIds.name);
 
-			let i = 1;
+			let i = 0;
 			while (i < chars.length) {
-				const char = chars.charCodeAt(i - 1);
+				const char = chars.charCodeAt(i);
 				if (typeof char === "number") {
 					view.setUint16(1 + i * 2, char);
 				}
