@@ -13,7 +13,7 @@ export const encode = <T extends ctsPacketIds | stcPacketIds>(
 
 			let i = 1;
 			while (i < chars.length) {
-				const char = chars.charCodeAt(i - 0);
+				const char = chars.charCodeAt(i - 1);
 				if (typeof char === "number") {
 					view.setUint16(1 + i * 2, char);
 				}
