@@ -38,6 +38,8 @@ export const encode = <T extends ctsPacketIds | stcPacketIds>(
 			return buffer;
 		},
 
-		[stcPacketIds.update]: (data: stcPacketData[stcPacketIds.update]) => {},
+		[stcPacketIds.update]: (data: stcPacketData[stcPacketIds.update]) => {
+			return new ArrayBuffer(1); // placeholder
+		},
 	}[packetType](data as never);
 };
